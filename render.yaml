@@ -2,7 +2,7 @@ services:
   - type: web
     name: signaldesk-signalserver
     runtime: python
-    plan: starter
+    plan: free
     rootDir: server
     buildCommand: pip install -r requirements.txt
     startCommand: python server.py
@@ -17,12 +17,9 @@ services:
       - key: VAPID_SUBJECT
         sync: false
       - key: DATABASE_PATH
-        value: /var/data/push.sqlite3
+        value: /tmp/push.sqlite3
       - key: POLL_SECONDS
         value: "65"
       - key: AUTO_DEMO
         value: "0"
-    disk:
-      name: signaldesk-push
-      mountPath: /var/data
-      sizeGB: 1
+    
